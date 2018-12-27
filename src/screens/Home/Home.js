@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './styles';
@@ -9,20 +9,30 @@ class Home extends PureComponent {
   state = {};
 
   componentDidMount() {
-    this.props.getArticlesBySource();
+    const { getArticles } = this.props;
+    getArticles();
   }
 
+  renderItem = ({ item }) => <Text />
+
   render() {
+    const { news } = this.props;
+    const { articles, loading } = news;
     return (
       <View style={styles.container}>
-        <Text>Home</Text>
+        <Text>News</Text>
       </View>
     );
   }
 }
 
 Home.propTypes = {
-  getArticlesBySource: PropTypes.func.isRequired,
+  getArticles: PropTypes.func.isRequired,
+  news: PropTypes.shape({}),
+};
+
+Home.defaultProps = {
+  news: null,
 };
 
 const mapStateToProps = ({ news }) => ({
@@ -31,5 +41,7 @@ const mapStateToProps = ({ news }) => ({
 
 export default connect(
   mapStateToProps,
-  { getArticlesBySource }
+  {
+    getArticles: getArticlesBySource,
+  }
 )(Home);

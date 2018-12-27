@@ -14,9 +14,6 @@
         ]
       }
     ],
-    "react/destructuring-assignment": [
-      "always"
-    ],
     "prettier/prettier": [
       "error",
       {

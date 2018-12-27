@@ -14,6 +14,9 @@
         ]
       }
     ],
+    "react/destructuring-assignment": [
+      "always"
+    ],
     "prettier/prettier": [
       "error",
       {
@@ -26,5 +29,6 @@
   },
   "plugins": [
     "prettier"
-  ]
+  ],
+  "parser": "babel-eslint"
 }

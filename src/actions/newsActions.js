@@ -1,8 +1,7 @@
 import { GET_ARTICLES, REQUEST } from '../constants/types';
 
-export const getArticles = payload => ({
+export const getArticlesBySource = () => ({
   type: GET_ARTICLES + REQUEST,
-  payload,
 });
 
-export default getArticles;
+export const getHeadlinesBySource = () => {};

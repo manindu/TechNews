@@ -1,6 +1,7 @@
 import { GET_ARTICLES, REQUEST, SUCCESS, FAILURE } from '../constants/types';
 
 const initialState = {
+  selectedSources: ['the-next-web', 'techcrunch', 'polygon'],
   articles: [],
   loading: false,
 };

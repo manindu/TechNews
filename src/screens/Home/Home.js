@@ -4,23 +4,49 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './styles';
 import { getArticlesBySource } from '../../actions/newsActions';
+import ArticleCard from './components/ArticleCard/ArticleCard';
 
 class Home extends PureComponent {
   state = {};
 
   componentDidMount() {
-    const { getArticles } = this.props;
-    getArticles();
+    this.getNewsArticles();
   }
 
-  renderItem = ({ item }) => <Text />
+  getNewsArticles = () => {
+    const { getArticles, news, page } = this.props;
+    getArticles({
+      page: page.nextPage,
+      sources: news.selectedSources.join(),
+    });
+  };
+
+  renderItem = ({ item }) => <ArticleCard article={item} />;
+
+  keyExtractor = (item, index) => index.toString();
+
+  getItemSeparatorComponent = () => <View style={styles.separator} />;
+
+  onEndReached = () => {
+    this.getNewsArticles();
+  };
 
   render() {
     const { news } = this.props;
     const { articles, loading } = news;
     return (
       <View style={styles.container}>
-        <Text>News</Text>
+        <View style={styles.listContainer}>
+          <FlatList
+            data={articles}
+            renderItem={this.renderItem}
+            keyExtractor={this.keyExtractor}
+            showsVerticalScrollIndicator={false}
+            ItemSeparatorComponent={this.getItemSeparatorComponent}
+            // onEndReachedThreshold={0.5}
+            onEndReached={this.onEndReached}
+          />
+        </View>
       </View>
     );
   }
@@ -28,15 +54,13 @@ class Home extends PureComponent {
 
 Home.propTypes = {
   getArticles: PropTypes.func.isRequired,
-  news: PropTypes.shape({}),
+  news: PropTypes.shape({}).isRequired,
+  page: PropTypes.shape({}).isRequired,
 };
 
-Home.defaultProps = {
-  news: null,
-};
-
-const mapStateToProps = ({ news }) => ({
+const mapStateToProps = ({ news, page }) => ({
   news,
+  page,
 });
 
 export default connect(

@@ -11,7 +11,11 @@ export default (state = initialState, action) => {
     case GET_ARTICLES + REQUEST:
       return { ...state, loading: true };
     case GET_ARTICLES + SUCCESS:
-      return { articles: action.payload.articles, loading: false };
+      return {
+        ...state,
+        articles: [...state.articles, ...action.payload.articles],
+        loading: false,
+      };
     case GET_ARTICLES + FAILURE:
       return { ...state, loading: false };
     default:

@@ -6,5 +6,7 @@ const api = create({
   headers: { Authorization: '3c84f2f26cb64452adf099aec1ea02de' },
 });
 
-export const getArticlesBySource = payload => api.get(`/everything?sources=${payload.join()}`);
-export const getHeadlinesBySource = payload => api.get(`/top-headlines?sources=${payload.join()}`);
+export const getArticlesBySource = payload =>
+  api.get(`/everything?sources=${payload.sources}&page=${payload.page}&language=en`);
+export const getHeadlinesBySource = payload =>
+  api.get(`/top-headlines?sources=${payload.sources}&page=${payload.page}&language=en`);

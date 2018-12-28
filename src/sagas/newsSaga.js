@@ -1,16 +1,15 @@
-import { takeLatest, put, take, select } from 'redux-saga/effects';
+import { takeLatest, put, take } from 'redux-saga/effects';
 import { GET_ARTICLES, REQUEST, MAKE_API_REQUEST, SUCCESS } from '../constants/types';
 import { getArticlesBySource } from '../api';
 
-function* getArticles() {
-  const sources = yield select(state => state.news.selectedSources);
-  const requestPayload = {
+function* getArticles(action) {
+  const request = {
     action: GET_ARTICLES,
     api: getArticlesBySource,
-    data: sources,
+    data: action.payload,
   };
-  yield put.resolve({ type: MAKE_API_REQUEST, payload: requestPayload });
-  const actionResult = yield take(requestPayload.action + SUCCESS);
+  yield put.resolve({ type: MAKE_API_REQUEST, payload: request });
+  const actionResult = yield take(request.action + SUCCESS);
   console.log('ACTION RESULT:::', actionResult);
 }
 

@@ -21,7 +21,14 @@ class Home extends PureComponent {
     });
   };
 
-  renderItem = ({ item }) => <ArticleCard article={item} />;
+  onCardPress = item => {
+    const { navigation } = this.props;
+    navigation.navigate('Article', {
+      article: item,
+    });
+  };
+
+  renderItem = ({ item }) => <ArticleCard article={item} onPress={this.onCardPress} />;
 
   keyExtractor = (item, index) => index.toString();
 
@@ -43,7 +50,6 @@ class Home extends PureComponent {
             keyExtractor={this.keyExtractor}
             showsVerticalScrollIndicator={false}
             ItemSeparatorComponent={this.getItemSeparatorComponent}
-            // onEndReachedThreshold={0.5}
             onEndReached={this.onEndReached}
           />
         </View>
@@ -56,6 +62,7 @@ Home.propTypes = {
   getArticles: PropTypes.func.isRequired,
   news: PropTypes.shape({}).isRequired,
   page: PropTypes.shape({}).isRequired,
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 const mapStateToProps = ({ news, page }) => ({

@@ -1,23 +1,23 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import { Home, Sources } from '../screens';
+import { Home, Article } from '../screens';
 import { colors } from '../theme';
 
 const RootNavigator = createStackNavigator({
   Home: {
     screen: Home,
     navigationOptions: () => ({
-      title: 'Home',
+      title: 'News Feed',
       headerStyle: {
         backgroundColor: colors.white,
         elevation: 0,
       },
     }),
   },
-  Sources: {
-    screen: Sources,
+  Article: {
+    screen: Article,
     navigationOptions: () => ({
-      title: 'Select Sources',
       headerTransparent: true,
+      headerTintColor: colors.white,
     }),
   },
 });

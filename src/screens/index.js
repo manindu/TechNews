@@ -1,4 +1,4 @@
 import Home from './Home/Home';
-import Sources from './Sources/Sources';
+import Article from './Article/Article';
 
-export { Home, Sources };
+export { Home, Article };

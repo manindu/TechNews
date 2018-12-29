@@ -1,3 +1,3 @@
-import NewsCard from './NewsCard';
+import RoundedButton from './RoundedButton/RoundedButton';
 
-export { NewsCard };
+export { RoundedButton };

@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { getLogoById } from '../../../../helpers';
+import { getSourceById } from '../../helpers';
 import styles from './styles';
 
 const ArticleCard = ({ article, onPress }) => {
@@ -14,7 +14,7 @@ const ArticleCard = ({ article, onPress }) => {
       <View style={styles.bottomRow}>
         <View style={styles.sourceContainer}>
           <Image
-            source={{ uri: getLogoById(source.id) }}
+            source={{ uri: getSourceById(source.id).logoUrl }}
             style={styles.logo}
             resizeMode="contain"
           />

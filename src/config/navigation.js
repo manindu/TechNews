@@ -6,10 +6,14 @@ const RootNavigator = createStackNavigator({
   Home: {
     screen: Home,
     navigationOptions: () => ({
-      title: 'News Feed',
+      title: 'Tech News',
       headerStyle: {
         backgroundColor: colors.white,
         elevation: 0,
+      },
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        fontSize: 24,
       },
     }),
   },

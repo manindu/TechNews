@@ -1,7 +1,6 @@
-import { GET_ARTICLES, REQUEST, SUCCESS, FAILURE } from '../constants/types';
+import { GET_ARTICLES, SET_SELECTED_SOURCES, REQUEST, SUCCESS, FAILURE } from '../constants/types';
 
 const initialState = {
-  selectedSources: ['the-next-web', 'techcrunch', 'polygon'],
   articles: [],
   loading: false,
 };
@@ -18,6 +17,8 @@ export default (state = initialState, action) => {
       };
     case GET_ARTICLES + FAILURE:
       return { ...state, loading: false };
+    case SET_SELECTED_SOURCES:
+      return initialState;
     default:
       return state;
   }

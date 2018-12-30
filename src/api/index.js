@@ -3,7 +3,7 @@ import Config from 'react-native-config';
 
 const api = create({
   baseURL: Config.API_BASE,
-  headers: { Authorization: '3c84f2f26cb64452adf099aec1ea02de' },
+  headers: { Authorization: Config.API_KEY },
 });
 
 export const getArticlesBySource = payload =>

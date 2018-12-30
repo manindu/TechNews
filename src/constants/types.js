@@ -1,4 +1,5 @@
 export const GET_ARTICLES = 'GET_ARTICLES';
+export const SET_SELECTED_SOURCES = 'SET_SELECTED_SOURCES';
 
 export const REQUEST = '_REQUEST';
 export const SUCCESS = '_SUCCESS';

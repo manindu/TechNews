@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import store from './config/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import store, { persistor } from './config/store';
 import RootNavigator from './config/navigation';
 
 export default class App extends Component {
